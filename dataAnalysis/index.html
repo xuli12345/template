@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>用户模型看板</title>
+   <link rel="stylesheet" href="https://cdn.mayilian100.com/ywym/file/styles/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.mayilian100.com/ywym/file/styles/css/hsCheckData.css">
+    <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"  rel="stylesheet">
+    <link rel="stylesheet" href="./css/index.css">
+   
+</head>
+
+<body class="content">
+    <input type="hidden" id="baseUrl" value="${baseUrl}">
+    <input type="hidden" id="activityId" value="${activityId}">
+    <input type="hidden" id="userId" value="${userId}">
+    <div class="container-fluid">
+        <div class="row header">
+            <div class="col-sm-3 col-lg-3 head-left">
+                <div class="logo-box">
+                    <img class="logo" src="./imgs/logo.png" alt="" />
+                    <i class="line"></i>
+                    <a class="back"> 返回商户后台</a>
+                </div>
+            </div>
+            <div class="col-sm-6  col-lg-6 head-center">用户模型看板</div>
+            <div class="col-sm-3 col-lg-3 head-right">
+                <div class="col-sm-8 checkedActivity">
+                    <select size="1" class="sel" id="checkActivity">
+                        <option value="">全部产品</option>
+                        <option value="0">品宣活动</option>
+                        <option value="1">红包活动</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid main">
+        <div class=" row RFM">
+            <div class="col-sm-12 col-lg-12 title">
+                <h3>RFM用户模型</h3>
+            </div>
+            <div class="user-type">
+                <div class="col-sm-4 col-lg-4 left" style="width: 29.1666665%">
+                    <div class="user-label" id="userLabel">
+                        <img src="./imgs/icon.png" alt="">
+                        <div class="bg">
+                            <div class="age"> 20-35岁</div>
+                            <div class="count">平均参与活动5次</div>
+                            <div class="mobile-type">32%用华为手机最多</div>
+                            <div class="province-ranked">山东省最多</div>
+                            <div class="gender-proportion">78%是男性</div>
+                            <div class="time-active">19-21时最活跃</div>
+                            <div class="mobile-andriod">68%用安卓手机</div>
+                            <div class="week">周五最活跃</div>
+                            <div class="desc">
+                                <p>营销策略：</p>
+                                <p>老用户有目的性的保持用户现状，持续赠送积分，提高中奖概率,但中奖金额为小额，新入用户提高中奖率，提高中奖金额。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 col-lg-4 center" style="width: 41.66666667%">
+                    <div class="type">
+                        <img src="./imgs/userType.png" alt="">
+                        <div class="type-list">
+                            <ul >
+                                <li>用户类型 </li>
+                                <li>人数</li>
+                                <li>比例</li>
+                                <li>R</li>
+                                <li>F</li>
+                                <li>M</li>
+                            </ul>
+                            <ul class="current">
+                                <li>重要价值用户 </li>
+                                <li>12456781</li>
+                                <li>10% </li>
+                                <li>高</li>
+                                <li>高</li>
+                                <li>高</li>
+                            </ul>
+                            <ul>
+                                <li>重要发展用户 </li>
+                                <li>12456781</li>
+                                <li>15%</li>
+                                <li>高</li>
+                                <li>低</li>
+                                <li>高</li>
+                            </ul>
+                            <ul>
+                                <li>重要保持用户 </li>
+                                <li>12456781</li>
+                                <li>10%</li>
+                                <li>低 </li>
+                                <li>高</li>
+                                <li>高</li>
+                            </ul>
+                            <ul>
+                                <li>重要挽留用户</li>
+                                <li>12456781</li>
+                                <li>5% </li>
+                                <li>低</li>
+                                <li>低</li>
+                                <li>高</li>
+                            </ul>
+                            <ul>
+                                <li>一般价值用户 </li>
+                                <li>12456781</li>
+                                <li>8%</li>
+                                <li>高</li>
+                                <li>高</li>
+                                <li>低</li>
+                            </ul>
+                            <ul>
+                                <li>一般发展用户 </li>
+                                <li>12456781</li>
+                                <li>7%</li>
+                                <li>高</li>
+                                <li>低</li>
+                                <li>低</li>
+                            </ul>
+                            <ul>
+                                <li>一般保持用户 </li>
+                                <li>12456781</li>
+                                <li> 20%</li>
+                                <li>低</li>
+                                <li>高</li>
+                                <li>低</li>
+                            </ul>
+                            <ul>
+                                <li>一般挽留用户 </li>
+                                <li>12456781</li>
+                                <li>25%</li>
+                                <li>低</li>
+                                <li>低</li>
+                                <li>低</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-lg-4 right" style="width: 29.1666665%">
+                    <div class="RFM-form">
+                        <div class="set-title">RFM设置</div>
+                        <div class="fr">
+                            <span>R: 最近消费时间</span>
+                            <div class="box">
+                                <input type="text" placeholder="30"><span>天</span>
+                                <p> 设置判断为《高消费金额》的金额，例如：500元以上</p>
+                            </div>
+
+
+                        </div>
+                        <div class="fr">
+                            <span> F：消费频次</span>
+                            <div class="box">
+                                <input type="text" placeholder="5"> <span>次</span>
+                                <p> 设置判断为《高消费频次》的次数，例如：5次以上</p>
+                            </div>
+
+                        </div>
+                        <div class="fr">
+                            <span> M: 消费金额</span>
+                            <div class="box">
+                                <input type="text" placeholder="500"> <span>元</span>
+                                <p>设置判断为《最近消费时间》的周期，例如：最近30天 </p>
+                            </div>
+                        </div>
+                        <div class="btn-box">
+                            <div class="save-btn">保存设置</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row header-row">
+            <div class=" col-sm-8 col-lg-8 left">
+                <h3>用户数据总览</h3>
+                <div class="btn-list" id="user-type">
+                    <span class="active">全部</span>
+                    <span>重要价值用户</span>
+                    <span>重要发展用户</span>
+                    <span>重要保存用户</span>
+                    <span>重要换留用户</span>
+                    <span>一般价值用户</span>
+                    <span>一般发展用户</span>
+                    <span>一般保存用户</span>
+                    <span>一般换留用户</span>
+                </div>
+            </div>
+            <div class="col-sm-4 col-lg-4 right">
+
+                <div class='col-sm-2 time'>
+                    <span>时间</span>
+                </div>
+                <div class='col-sm-4 ' style=" position: relative;">
+                    <input type="text" class="form-control datetimepicker-input" id="star-time"
+                        data-toggle="datetimepicker" data-target="#datetimepicker5" />
+                    <span style="position: absolute; top: 0; right: -6px;">—</span>
+                </div>
+                <div class='col-sm-4'>
+                    <input type="text" class="form-control datetimepicker-input" id="end-time"
+                        data-toggle="datetimepicker" data-target="#datetimepicker6" />
+                </div>
+                <div class='col-sm-2 save'>
+                    保存
+                </div>
+
+
+            </div>
+        </div>
+        <div class="row" style="height: 700px;">
+
+            <div class=" col-sm-4 col-lg-4  main-left" style="width: 29.1666665%">
+                <div class="top">
+                    <div class="le">
+                        <div class="tit">消费者性别占比</div>
+                        <div id="sex" style="height:215px;margin-top: 35px;margin-left: 10px;"></div>
+                    </div>
+                    <div class="ri " id="kantar"></div>
+                </div>
+                <div class="bottom">
+                    <div class="tit">
+                        <span class="ranking">消费者扫码地区排名</span>
+                        <div id="provinceRanked"></div>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr class="title">
+                                <th>排名</th>
+                                <th>省份</th>
+                                <th>参与次数</th>
+                                <th>比例</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-sm-4 col-lg-4 main-center" style="width: 41.66666667%">
+                <div class="center-box">
+                    <div class="globe-box">
+                        <img class="globe" src="./imgs/source67.svg" alt="" />
+                    </div>
+
+                    <!-- 中国地图 -->
+                    <div class="flex-cell">
+                        <div class="regional-distribution">
+                            <p class="tit">扫码人次地区分布</p>
+                            <p><span>总人数：<span>15151135</span>人 </span></p>
+                            <p><span> 占比：<span>100%</span></span></p>
+                        </div>
+
+                        <div class="chart-wrapper">
+                            <div class="chart-box" id="mapChart"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-sm-4 col-lg-4 main-right" style="width: 29.1666665%">
+                <div class="right">
+                    <div class="phone-operator">
+                        <div class="le">
+                            <div class="tit">手机运营商占比</div>
+                            <!-- 手机运营商占比 -->
+                            <div id="operator" style="height:195px;margin-top: 35px;margin-left: 10px;"></div>
+                        </div>
+                        <!-- 进度条 -->
+                        <div class="ri" id="operator-pro"></div>
+                    </div>
+                    <!-- 手机品牌 -->
+                    <div class="phone-brand">
+                        <div class="title">
+                            <span class="brand current">品牌</span>
+                            <span class="mobile-type">机型</span>
+                        </div>
+                        <div id="mobileRanking" style="height:205px;padding-left: 5px;padding-top: 10px;"></div>
+                    </div>
+                    <!-- 手机操作系统 -->
+                    <div class="operating-system">
+                        <div class="tit">手机操作系统占比</div>
+                        <div id="system" style="width: 55%; height: 195px; padding-left: 10px; margin-top: 35px; ">
+                        </div>
+                        <!-- 进度条 -->
+                        <div class="system-right" id="system-pro"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 底部数据 -->
+        <div class="row bottom">
+            <div class="left col-sm-4 col-lg-4" style="width: 29.1666665%">
+                <!--年龄分布  -->
+                <div class="age-box">
+                    <div class="age-chart">
+                        <div class="tit">年龄分布</div>
+                        <div id="age" style="height:335px;margin-left: 10px;"></div>
+                    </div>
+                    <div id="age-propress"></div>
+                </div>
+            </div>
+            <div class="right col-sm-8 col-lg-8 active-right" style="width:70.8333333335%">
+                <!-- 消费者参与活动时间分布情况 -->
+                <div class="time-list">
+                    <div class="button-box">
+                        <span class="hours active">24小时分布</span>
+                        <span class="day">日分布</span>
+                        <span class="week">周分布</span>
+                    </div>
+                    <div id="tiemChart" style="height:400px; padding: 10px;"></div>
+                </div>
+            </div>
+        </div>
+        <!-- 用户标签 -->
+        <div class="row laber-list" style="display: block;">
+            <div class="col-sm-12 col-lg-12">
+                <h3>用户标签</h3>
+            </div>
+            <div class="col-sm-12 col-lg-12">
+                <ul class="lists clearfix">
+                    <li>全部<span>|</span></li>
+                    <li>基础属性<span>|</span></li>
+                    <li>地理属性<span>|</span></li>
+                    <li>信用属性<span>|</span></li>
+                    <li>财富属性<span>|</span></li>
+                    <li>消费行为<span>|</span></li>
+                    <li>互动行为<span>|</span></li>
+                    <li>社交行为<span>|</span></li>
+                    <li>事实类标签<span>|</span></li>
+                    <li>业务类标签<span>|</span></li>
+                    <li>统计类标签<span>|</span></li>
+                    <li>算法类标签<span>|</span></li>
+                    <li>商户自定义标签<span>|</span></li>
+                    <li>冷数据标签<span>|</span></li>
+                    <li>热数据标签</li>
+                </ul>
+            </div>
+            <div class="col-sm-12 col-lg-12">
+                <ul class="btn-list clearfix">
+                    <li>90后</li>
+                    <li>夜生活</li>
+                    <li>山东</li>
+                    <li>男性</li>
+                    <li>白领</li>
+                    <li>高端</li>
+
+                    <li>90后</li>
+                    <li>夜生活</li>
+                    <li>山东</li>
+                    <li>男性</li>
+                    <li>白领</li>
+                    <li>高端</li>
+                    <li>90后</li>
+                    <li>夜生活</li>
+                    <li>山东</li>
+                    <li>男性</li>
+                    <li>白领</li>
+                    <li>高端</li>
+                    <li>90后</li>
+                    <li>夜生活</li>
+                    <li>山东</li>
+                    <li>男性</li>
+                    <li>白领</li>
+                    <li>高端</li>
+                    <li>90后</li>
+                    <li>夜生活</li>
+                    <li>山东</li>
+                    <li>男性</li>
+                    <li>白领</li>
+                    <li>高端</li>
+                    <li>90后</li>
+                    <li>夜生活</li>
+                    <li>山东</li>
+                    <li>男性</li>
+                    <li>白领</li>
+                    <li>高端</li>
+                    <li>90后</li>
+                    <li>夜生活</li>
+                    <li>山东</li>
+                    <li>男性</li>
+                    <li>白领</li>
+                    <li>高端</li>
+                    <li>90后</li>
+                    <li>夜生活</li>
+                    <li>山东</li>
+                    <li>男性</li>
+                    <li>白领</li>
+                    <li>高端</li>
+                    <li>90后</li>
+                    <li>夜生活</li>
+                    <li>山东</li>
+                    <li>男性</li>
+                    <li>白领</li>
+                    <li>高端</li>
+                    <li>90后</li>
+                    <li>夜生活</li>
+                    <li>山东</li>
+                    <li>男性</li>
+                    <li>白领</li>
+                    <li>高端</li>
+                    <li>90后</li>
+                    <li>夜生活</li>
+                    <li>山东</li>
+                    <li>男性</li>
+                    <li>白领</li>
+                    <li>高端</li>
+                    <li>90后</li>
+                    <li>夜生活</li>
+                    <li>山东</li>
+                    <li>男性</li>
+                    <li>白领</li>
+                    <li>高端</li>
+                    <li>90后</li>
+                    <li>夜生活</li>
+                    <li>山东</li>
+                    <li>男性</li>
+                    <li>白领</li>
+                    <li>高端</li>
+                    <li>90后</li>
+                    <li>夜生活</li>
+                    <li>山东</li>
+                    <li>男性</li>
+                    <li>白领</li>
+                    <li>高端</li>
+                </ul>
+            </div>
+        </div>
+        <!-- 新老用户占比 -->
+        <div class="row users">
+            <div class="newOld-user col-sm-4 col-lg-4" style="width: 29%">
+                <div class="select-time">
+                    <h3>新老用户占比</h3>
+                    <div class="col-sm-12 users-time">
+                        <div class='time'>
+                            <span>时间</span>
+                        </div>
+                        <div class='col-sm-4 ' style=" position: relative;">
+                            <input type="text" class="form-control datetimepicker-input" id="user-star-time"
+                                data-toggle="datetimepicker" data-target="#datetimepicker5" />
+                            <span style="position: absolute; top: 0; right: -6px;">—</span>
+                        </div>
+                        <div class='col-sm-4'>
+                            <input type="text" class="form-control datetimepicker-input" id="user-end-time"
+                                data-toggle="datetimepicker" data-target="#datetimepicker6" />
+                        </div>
+                        <div class='col-sm-2 save'>
+                            保存
+                        </div>
+                    </div>
+                    <div class="col-sm-12 user-chart">
+                        <div class="left">
+                            <div id="users" style="height:270px;margin-left: 10px;"></div>
+                        </div>
+                        <div class="right">
+                            <div id="users-propress"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="user-layal col-sm-8 col-lg-8" style="width:71%">
+                <h3>用户忠诚度</h3>
+                <div class="col-sm-12" style="display: flex;align-items: center;padding-left: 0;">
+                    <div class="col-sm-2 tit-box ">
+                        <span class="frequency">频次</span>
+                        <span class="line">|</span>
+                        <span class="active-time"> 最近活跃时间</span>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="col-sm-12 users-time">
+                            <div class=' time'>
+                                <span>时间</span>
+                            </div>
+                            <div class='col-sm-4 ' style=" position: relative;">
+                                <input type="text" class="form-control datetimepicker-input" id="star"
+                                    data-toggle="datetimepicker" data-target="#datetimepicker5" />
+                                <span style="position: absolute; top: 0; right: -6px;">—</span>
+                            </div>
+                            <div class='col-sm-4'>
+                                <input type="text" class="form-control datetimepicker-input" id="end"
+                                    data-toggle="datetimepicker" data-target="#datetimepicker6" />
+                            </div>
+                            <div class='col-sm-2 save'>
+                                保存
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div id="frequencyChart" style="height:336px;"></div>
+                </div>
+            </div>
+
+        </div>
+        <!--用户数据分析总结  -->
+        <div class="row summary">
+
+            <h3>用户数据分析总结</h3>
+            <div class="col-sm-12" style="display: flex;justify-content: center;align-items: center;">
+                <div class="col-sm-4 desc" >
+                    <p>获取专业的用户数据分析报告，帮助您获取用户画像，细分市场，满足不同的市场需求，实现精准化营销及效果反馈，为企业战略调整提供数据支撑</p>
+                    <div class="buy-btn">购买该服务</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+
+
+<script src="https://cdn.mayilian100.com/ywym/file/js/js/echarts.min.js 	"></script>
+<script src="https://cdn.mayilian100.com/ywym/file/js/js/template-web.js"></script>
+<script src="https://cdn.mayilian100.com/ywym/file/js/js/jquery.min.js"></script>
+<script src="https://cdn.mayilian100.com/ywym/file/js/js/hsCheckData.js"></script>
+<script src="https://cdn.mayilian100.com/ywym/file/js/js/echarts-map-china.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.mayilian100.com/ywym/file/js/js/moment.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+<script src="./js/index.js"></script>
+<!-- 用户标签数据 -->
+<script id="lebelTpl" type="text/html">
+{{each list value key}}
+<img src="{{value.imgs}}" alt="">1
+<div class="bg">
+    <div class="age"> {{value.age}}</div>
+    <div class="count">{{value.count}}</div>
+    <div class="mobile-type">{{value.mobileType}}</div>
+    <div class="province-ranked">{{value.province}}</div>
+    <div class="gender-proportion">{{value.gender}}</div>
+    <div class="time-active">{{value.activeTiem}}</div>
+    <div class="mobile-andriod">{{value.otherMobile}}</div>
+    <div class="week">{{value.week}}</div>
+    <div class="desc">
+        <p>营销策略：</p>
+        <p>{{value.desc}}</p>
+    </div>
+</div>
+{{/each}}
+</script>
+<!--商户活动列表-->
+<script id="actiTpl" type="text/html">
+    {{each list value index}}
+    <option value="{{value.id}}">{{value.name}}</option>
+    {{/each}}
+</script>
+<!-- 消费者数据占比模板进度条 -->
+<script id="kantalTpl" type="text/html">
+    {{each list value key}}
+    <div class="male">
+        {{value.name}}
+        <span>{{value.value}}</span>
+    </div>
+    <div class="propress ">
+        <div class="son"></div>
+    </div>
+    {{/each}}
+</script>
+<!-- 消费者年龄占比模板进度条 -->
+<script id="ageTpl" type="text/html">
+    {{each list value key}}
+    <div class="male">
+        {{value.name}} 
+    </div>
+    <div class="propress ">
+        <div class="son"></div>
+    </div>
+    {{/each}}
+</script>
+<!-- 新老顾客数据占比模板进度条 -->
+<script id="customerTpl" type="text/html">
+    {{each list value key}}
+    <div class="male">
+        {{value.name}}
+        <span>{{value.value}}</span>
+    </div>
+    <div class="propress ">
+        <div class="son"></div>
+    </div>
+    {{/each}}
+</script>
+<!-- 手机运营商占比模板进度条 -->
+<script id="operatorTpl" type="text/html">
+    {{each list value key}}
+    <div class="telecom">
+        {{value.name}}
+        <span>{{value.value}}</span>
+    </div>
+    <div class="propress ">
+        <div class="son"></div>
+    </div>
+    {{/each}}
+</script>
+
+<!-- 手机操作系统占比模板进度条 -->
+<script id="systemTpl" type="text/html">
+    {{each list value key}}
+    <div class="andriod"> {{value.name}}
+        <span>{{value.value}}</span>
+    </div>
+    <div class="propress andriod-propress">
+        <div class="son"></div>
+    </div>
+    {{/each}}
+</script>
+
+<!-- 消费者扫码地区排名模板 -->
+<script id="budgetTpl" type="text/html">
+    {{each list value index}}
+    <tr class="list">
+        <td>
+            <span class="first">{{index+1}}</span>
+        </td>
+        <td>{{value.city}}</td>
+        <td>{{value.count}}</td>
+        <td>{{value.ratio}}</td>
+    </tr>
+    {{/each}}
+</script>

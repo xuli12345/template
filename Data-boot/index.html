@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>活动数据仪表大盘</title>
+	<link rel="stylesheet" href="./lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+	<link rel="stylesheet" href="./css/hsCheckData.css">
+	<link rel="stylesheet" href="./css/home.css">
+</head>
+
+<body class="content">
+	<input type="hidden" id="baseUrl" value="${baseUrl}">
+	<input type="hidden" id="activityId" value="${activityId}">
+	<input type="hidden" id="userId" value="${userId}">
+	<div class="container-fluid">
+		<div class="row header">
+			<div class="col-sm-4 col-lg-4 head-left">
+				<div class="logo-box">
+					<img class="logo" src="./imgs/logo.png" alt="" />
+					<i class="line"></i>
+					<a class="back"> 返回商户后台</a>
+				</div>
+			</div>
+			<div class="col-sm-4  col-lg-4 head-center">活动数据仪表大盘</div>
+			<div class="col-sm-4 col-lg-4 head-right">
+				<div class="row">
+					<div class="col-sm-6 checkedActivity">
+						<select size="1" class="sel" id="checkActivity">
+							<option value="">全部活动</option>
+							<option value="0">品宣活动</option>
+							<option value="1">红包活动</option>
+						</select>
+					</div>
+					<div class="col-sm-6 filtrate">
+						<select size="1" class="sel" id="selActivity">
+							<!--<option value="1">单个红包活动</option>-->
+						</select>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid main">
+		<div class="row" style="height: 700px;">
+			<div class=" col-sm-4 col-lg-4  main-left" style="width: 29.1666665%">
+				<div class="top">
+					<div class="le">
+						<div class="tit">消费者性别占比</div>
+						<div id="sex" style="height:215px;margin-top: 35px;"></div>
+					</div>
+					<div class="ri " id="kantar"></div>
+				</div>
+				<div class="bottom">
+					<div class="tit">
+						<span class="ranking">消费者扫码地区排名</span>
+						<div id="provinceRanked"></div>
+					</div>
+					<table class="table">
+						<thead>
+							<tr class="title">
+								<th>排名</th>
+								<th>省份</th>
+								<th>参与次数</th>
+								<th>比例</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+				</div>
+			</div>
+			<div class="col-sm-4 col-lg-4 main-center" style="width: 41.66666667%">
+				<div class="center-box">
+					<div class="globe-box">
+						<img class="globe" src="./imgs/source67.svg" alt="" />
+					</div>
+
+					<!-- 中国地图 -->
+					<div class="flex-cell">
+						<div class="regional-distribution">扫码人次地区分布
+							<p id="totalNum">总人数:2222</p>
+						</div>
+						<div class="chart-wrapper">
+							<div class="chart-box" id="mapChart"></div>
+						</div>
+					</div>
+					<!-- 扫码统计 -->
+					<div class="code-statistics">
+						<div class="sum">
+							<p>累计扫码量</p>
+							<p class="num">13565649</p>
+						</div>
+						<div class="today">
+							<p>今日扫码量</p>
+							<p class="num">165649</p>
+						</div>
+						<div class="yesterday">
+							<p>昨日扫码量</p>
+							<p class="num">565649</p>
+						</div>
+						<div class="seven-days">
+							<p>七日扫码量</p>
+							<p class="num">1365649</p>
+						</div>
+						<div class="month">
+							<p>30天扫码量</p>
+							<p class="num">3565649</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4 col-lg-4 main-right" style="width: 29.1666665%">
+				<div class="right">
+					<div class="phone-operator">
+						<div class="le">
+							<div class="tit">手机运营商占比</div>
+							<!-- 手机运营商占比 -->
+							<div id="operator" style="height:195px;margin-top: 35px;"></div>
+						</div>
+						<!-- 进度条 -->
+						<div class="ri" id="operator-pro"></div>
+					</div>
+					<!-- 手机品牌 -->
+					<div class="phone-brand">
+						<div class="title">
+							<span class="brand current">品牌</span>
+							<span class="mobile-type">机型</span>
+						</div>
+						<div id="mobileRanking" style="height:205px;padding-left: 5px;padding-top: 10px;"></div>
+					</div>
+					<!-- 手机操作系统 -->
+					<div class="operating-system">
+						<div class="tit">手机操作系统占比</div>
+						<div id="system" style="width: 55%; height: 195px; padding-left: 10px; margin-top: 35px; ">
+						</div>
+						<!-- 进度条 -->
+						<div class="system-right" id="system-pro"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 活动数据总览 -->
+		<div class="row active">
+			<div class=" col-sm-4 col-lg-4 active-left" style="width: 29.1666665%">
+				<div class="trophy-data">
+					<div class="tp">
+						<div class="lf">活动奖品消耗数据</div>
+						<div class="rg">
+							<span class="active all" style="cursor: pointer; ">全部&nbsp;</span>
+							<span class="redpack" style="cursor: pointer;">红包&nbsp;</span>
+							<span class="virtual" style="cursor: pointer;">虚拟奖品&nbsp;</span>
+							<span class="entity" style="cursor: pointer;">实物奖品&nbsp;</span>
+						</div>
+					</div>
+					<div class="ri" id="prize-pro"></div>
+				</div>
+			</div>
+			<div class="col-sm-8 col-lg-8 active-right" style="width:70.8333333335%">
+				<div class="chart">
+					<div class="header">
+						<span class="title">活动数据总览 <span class="city" style="font-size:14px;"></span></span>
+						<div class="right">
+							<div id="cityDanXuan" style="width: 250px;"></div>
+						</div>
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th></th>
+								<th>二维码扫描次数</th>
+								<th>AR扫描次数</th>
+								<th>活动页面访客数</th>
+								<th>公众号关注人数</th>
+								<th>兑奖次数</th>
+								<th>兑奖用户人数</th>
+								<th>红包金额</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<!-- 活动数据每日走势 -->
+		<div class="row trend">
+			<div class="col-sm-4 col-lg-4" style="width: 29.1666665%">
+				<div class="trend-left">
+					<div class="budget-data">
+						<div class="budget-chart">
+							<div class="tit">预算金额消耗数据</div>
+							<div id="budget" style="height:200px;margin-top: 40px;">
+							</div>
+						</div>
+						<div class="budget-right">
+							<div class="general-budget">
+								<span>总预算：</span>
+								<span class="budgetNumber" id="budgetNumber"></span>
+							</div>
+							<div class="expend">
+								<span>已消耗：</span>
+								<span class="number" id="expendNum"></span>
+								<span>占比<span class="ratio" id="expendRatio"></span></span>
+							</div>
+							<div class="surplus">
+								<span>剩 &nbsp;&nbsp;&nbsp;余：</span>
+								<span class="number" id="surplusNum"></span>
+								<span> 占比 <span class="ratio" id="surplusRatio"></span></span>
+							</div>
+						</div>
+					</div>
+					<div class="qrcode-data">
+						<div class="qrcode-chart">
+							<div class="tit">二维码消耗数据</div>
+							<div id="qrcode" style="height:200px;margin-top: 40px;"></div>
+						</div>
+						<div class="qrcode-right">
+							<div class="general-budget code-total" id="totalWrapper">
+								<span>总码量：</span>
+								<span class="number">50000</span>
+							</div>
+							<div class="expend employ" id="employWrapper">
+								<span>已使用：</span>
+								<span class="number">10000 </span>
+								<span>占比<span class="ratio">20%</span></span>
+							</div>
+							<div class="surplus code-surplus" id="surplusWrapper">
+								<span>剩 &nbsp;&nbsp;&nbsp;余：</span>
+								<span class="number">10000 </span>
+								<span> 占比<span class="ratio">80% </span></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-8 col-lg-8 trend-right" style="width:70.8333333335%">
+				<div class="trend-box">
+					<div id="trend-chart" style="height: 500px; padding: 10px;"></div>
+				</div>
+			</div>
+		</div>
+		<!-- 活动基本信息 -->
+		<div class="row active-msg">
+			<div class="col-sm-4 col-lg-4" style="height: 100%;width: 29.1666665%;">
+				<div class="basic">
+					<p class="tit">活动基本信息</p>
+					<ul class="message"></ul>
+				</div>
+			</div>
+			<div class="col-sm-8 col-lg-8" style="padding-left:0; width:70.8333333335%;">
+				<div class="time-list">
+					<div class="button-box">
+						<span class="hours active">24小时分布</span>
+						<span class="day">日分布</span>
+						<span class="week">周分布</span>
+					</div>
+					<div id="tiemChart" style="height:400px; padding: 10px;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
+
+<script src="./js/echarts.min.js"></script>
+<script src="./lib/artTemplate/template-web.js"></script>
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script src="js/hsCheckData.js"></script>
+<script src="js/cityData.js"></script>
+<script type="text/javascript" src="js/echarts-map-china.js"></script>
+<script src="js/home.js"></script>
+<!--商户活动列表-->
+<script id="actiTpl" type="text/html">
+	{{each list value index}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!-- 消费者数据占比模板进度条 -->
+<script id="kantalTpl" type="text/html">
+	{{each list value key}}
+	<div class="male">
+		{{value.name}}
+		<span>{{value.value}}</span>
+	</div>
+	<div class="propress ">
+		<div class="son"></div>
+	</div>
+	{{/each}}
+</script>
+<!-- 手机运营商占比模板进度条 -->
+<script id="operatorTpl" type="text/html">
+	{{each list value key}}
+	<div class="telecom">
+		{{value.name}}
+		<span>{{value.value}}</span>
+	</div>
+	<div class="propress ">
+		<div class="son"></div>
+	</div>
+	{{/each}}
+</script>
+
+<!-- 手机操作系统占比模板进度条 -->
+<script id="systemTpl" type="text/html">
+	{{each list value key}}
+	<div class="andriod"> {{value.name}}
+		<span>{{value.value}}</span>
+	</div>
+	<div class="propress andriod-propress">
+		<div class="son"></div>
+	</div>
+	{{/each}}
+</script>
+<!-- 活动奖品消耗数据模板进度条 -->
+<script id="prizeTpl" type="text/html">
+	{{each list value key}}
+	<div class="unitary">{{value.tit}}</div>
+	<div class="propress-box">
+		<div class="propress">
+			<div class="son"></div>
+		</div>
+		<div class="pro-right">
+		<span>{{value.percent}}</span>
+		<span>已消耗<span>{{value.expend}}</span>/库存<span>{{value.repertory}}</span></span>
+		</div>
+	</div>
+	{{/each}}
+</script>
+
+<!-- 消费者扫码地区排名模板 -->
+<script id="budgetTpl" type="text/html">
+	{{each list value index}}
+	<tr class="list">
+		<td>
+			<span class="first">{{index+1}}</span>
+		</td>
+		<td>{{value.city}}</td>
+		<td>{{value.count}}</td>
+		<td>{{value.ratio}}</td>
+	</tr>
+	{{/each}}
+</script>
+
+<!--活动数据总览模板  -->
+<script id="activityTpl" type="text/html">
+	{{each list value key}}
+	<tr>
+		<td>{{value.date}}</td>
+		<td>{{value.codeNumber}}</td>
+		<td>{{value.ARCoderNumber}}</td>
+		<td>{{value.activeVisitors}}</td>
+		<td>{{value.tencentAttention}}</td>
+		<td>{{value.ticketNumber}}</td>
+		<td>{{value.ticketPerple}}</td>
+		<td>{{value.redpackMoney}}元</td>
+	</tr>
+	{{/each}}
+</script>
+
+<!--活动基本信息模板  -->
+<script id="activeTpl" type="text/html">
+	{{each list value key }}
+	<li class="fr">
+		<span>{{value.tit}}：</span>
+		<span><span class="code">{{value.content}}
+	</li>
+	{{/each}}
+</script>

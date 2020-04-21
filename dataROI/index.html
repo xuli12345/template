@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>营销活动ROI看板</title>
+    <link rel="stylesheet" href="https://cdn.mayilian100.com/ywym/file/styles/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.mayilian100.com/ywym/file/styles/css/hsCheckData.css">
+    <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/index.css">
+
+</head>
+
+<body class="content">
+    <input type="hidden" id="baseUrl" value="${baseUrl}">
+    <input type="hidden" id="activityId" value="${activityId}">
+    <input type="hidden" id="userId" value="${userId}">
+    <div class="container-fluid">
+        <div class="row header">
+            <div class="col-sm-3 col-lg-3 head-left">
+                <div class="logo-box">
+                    <img class="logo" src="./imgs/logo.png" alt="" />
+                    <i class="line"></i>
+                    <a class="back"> 返回商户后台</a>
+                </div>
+            </div>
+            <div class="col-sm-6  col-lg-6 head-center">营销活动ROI看板</div>
+            <div class="col-sm-3 col-lg-3 head-right">
+                <div class="col-sm-8 checkedActivity">
+                    <select size="1" class="sel" id="checkActivity">
+                        <option value="">全部产品</option>
+                        <option value="0">品宣活动</option>
+                        <option value="1">红包活动</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid main">
+        <div class="row">
+            <div class=" col-sm-8 col-lg-8  main-left">
+                <div class="compute">
+                    <h3 class="title">ROI计算</h3>
+                    <div class="methods">营销投入回报ROI：收益金额（总收入(一物一码消耗量*产品单价）-产品成本（一物一码消耗量*产品成本））/营销总投入（奖项投入+活动费用）*100%
+                    </div>
+
+                    <div class="col-sm-8 col-lg-8 formula ">
+                        <div class="formula-box">
+                            <div class="marketing-amount flex-center-center">
+                                <div class="col-sm-2 col-lg-2 flex-center-centery">
+                                    <div class="number" style=" color: #20A7D5;">150000</div>
+                                    <div class="des">产品销售收入金额</div>
+                                </div>
+                                <div class="col-sm-1 col-lg-1 symbol">=</div>
+                                <div class="col-sm-2 col-lg-2 flex-center-centery">
+                                    <div class="number">15000</div>
+                                    <div class="des">一物一码消耗量</div>
+                                </div>
+                                <div class="col-sm-1 col-lg-1 symbol">x</div>
+                                <div class=" col-sm-2 col-lg-2 flex-center-centery">
+                                    <div  class="number">10</div>
+                                    <div class="des">产品单价</div>
+                                </div>
+                                <div class="col-sm-1 col-lg-1 symbol">+</div>
+                                <div class="col-sm-2 col-lg-2 flex-center-centery">
+                                    <input type="text" value="0">
+                                    <div class="des">其他收入</div>
+                           
+                                </div>
+
+                            </div>
+                            <div class="product-cost flex-center-center">
+                                <div class="col-sm-2 col-lg-2 flex-center-centery">
+                                    <div class="number" style=" color: #20A7D5;">150000</div>
+                                    <div class="des">产品成本</div>
+                                </div>
+                                <div class="col-sm-1 col-lg-1 symbol">=</div>
+                                <div class="col-sm-2 col-lg-2 flex-center-centery">
+                                    <div class="number">15000</div>
+                                    <div class="des">一物一码消耗量</div>
+                                </div>
+                                <div class="col-sm-1 col-lg-1 symbol">x</div>
+                                <div class=" col-sm-2 col-lg-2 flex-center-centery">
+                                    <input  type="text" value="4">
+                                    <div class="des">产品成本</div>
+                                </div>
+                                <div class="col-sm-1 col-lg-1 symbol">+</div>
+                                <div class="col-sm-2 col-lg-2 flex-center-centery">
+                                    <input type="text" value="0">
+                                    <div class="des">其他收入</div>
+                                </div>
+                            </div>
+                            <div class="marketing-total flex-center-center">
+                                <div class="col-sm-2 col-lg-2 flex-center-centery">
+                                    <div class="number" style=" color: #20A7D5;">450000</div>
+                                    <div class="des">营销总投入</div>
+                                </div>
+                                <div class="col-sm-1 col-lg-1 symbol">=</div>
+                                <div class="col-sm-2 col-lg-2 flex-center-centery">
+                                    <div class="number">30000</div>
+                                    <div class="des">已消耗奖项投入</div>
+                                </div>
+                                <div class="col-sm-1 col-lg-1 symbol">x</div>
+                                <div class=" col-sm-2 col-lg-2 flex-center-centery">
+                                    <input type="text" value="0" >
+                                    <div class="des">营销费用投入</div>
+                                </div>
+                                <div class="col-sm-1 col-lg-1 symbol">+</div>
+                                <div class="col-sm-2 col-lg-2 flex-center-centery">
+                                    <input type="text" value="0" >
+                                    <div class="des">其他收入</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-lg-4  result ">
+                        <div class="result-box flex-center-centery">
+                            <div class="data">2.25</div>
+                            <div class="msg">营销投入回报ROI</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-12 btn-box">
+                        <div class="save">保存设置</div>
+                    </div>
+
+                </div>
+                <div class="data-screen">
+
+                    <div class="col-sm-6 col-lg-6 title">
+                        <h3>销售收入数据总览</h3>
+                    </div>
+                    <div class="col-sm-6 col-lg-6 title">
+                        <div class='col-sm-2 time'>
+                            <span>时间</span>
+                        </div>
+                        <div class='col-sm-4 ' style=" position: relative;">
+                            <input type="text" class="form-control datetimepicker-input" id="star"
+                                data-toggle="datetimepicker" data-target="#datetimepicker5" />
+                            <span style="position: absolute; top: 0; right: -6px;">—</span>
+                        </div>
+                        <div class='col-sm-4'>
+                            <input type="text" class="form-control datetimepicker-input" id="end"
+                                data-toggle="datetimepicker" data-target="#datetimepicker6" />
+                        </div>
+                        <div class='col-sm-2 search'> 查询</div>
+
+                    </div>
+                    <div class="col-sm-12 col-lg-12">
+                        <div class="income" id="income-chart" style="height: 610px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-4 col-lg-4 main-right">
+
+                <div class="sex">
+                    <div class="left">
+                        <div class="tit">奖项消耗投入性别占比</div>
+                        <div id="sex" style="height:225px;margin-top: 35px;margin-left: 10px;"></div>
+                    </div>
+                    <div class="right " id="kantar"></div>
+                </div>
+                <div class="bottom">
+                    <div class="tit">
+                        <span class="ranking">奖项消耗投入地区排名TOP10</span>
+                        <div id="provinceRanked"></div>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr class="title">
+                                <th>排名</th>
+                                <th>省份</th>
+                                <th>参与次数</th>
+                                <th>比例</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="market">
+                    <div class="left">
+                        <div class="tit">奖项消耗投入性别占比</div>
+                        <div id="market-sex" style="height:225px;margin-top: 35px;margin-left: 10px;"></div>
+                    </div>
+                    <div class="right " id="market"></div>
+                </div>
+                <div class="regional-rankings">
+                    <div class="tit">
+                        <span class="ranking">销售收入地区排名TOP10</span>
+                        <div id="province"></div>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr class="title">
+                                <th>排名</th>
+                                <th>省份</th>
+                                <th>参与次数</th>
+                                <th>比例</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+</body>
+
+</html>
+
+
+
+
+<script src="https://cdn.mayilian100.com/ywym/file/js/js/echarts.min.js 	"></script>
+<script src="https://cdn.mayilian100.com/ywym/file/js/js/template-web.js"></script>
+<script src="https://cdn.mayilian100.com/ywym/file/js/js/jquery.min.js"></script>
+<script src="https://cdn.mayilian100.com/ywym/file/js/js/hsCheckData.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.mayilian100.com/ywym/file/js/js/moment.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+<script src="./js/index.js"></script>
+
+
+<!-- 消费者奖项消耗投入性别占比模板进度条 -->
+<script id="kantalTpl" type="text/html">
+    {{each list value key}}
+    <div class="male">
+        {{value.name}}
+        <span>({{value.amount}}元)</span>
+    </div>
+    <div class="propress ">
+        <div class="son"></div>
+    </div>
+    {{/each}}
+</script>
+
+<!-- 销售收入性别占比模板进度条 -->
+<script id="marketTpl" type="text/html">
+    {{each list value key}}
+    <div class="male">
+        {{value.name}}
+        <span>({{value.amount}}元)</span>
+    </div>
+    <div class="propress ">
+        <div class="son"></div>
+    </div>
+    {{/each}}
+    </script <!-- 消费者扫码地区排名模板 -->
+    <script id="budgetTpl" type="text/html">
+        {{each list value index}}
+        <tr class="list">
+            <td>
+                <span class="first">{{index+1}}</span>
+            </td>
+            <td>{{value.city}}</td>
+            <td>{{value.count}}</td>
+            <td>{{value.ratio}}</td>
+        </tr>
+        {{/each}}
+</script>
